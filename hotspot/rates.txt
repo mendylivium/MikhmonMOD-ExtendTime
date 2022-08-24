@@ -1,0 +1,1 @@
+var rates = [{"rate_name":"Php","rate":"5","time":"1 Hour"},{"rate_name":"Php","rate":"10","time":"3 Hours"},{"rate_name":"Php","rate":"50","time":"12 Hours"},{"rate_name":"Php","rate":"100","time":"20 Hours"}];

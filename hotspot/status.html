@@ -1,0 +1,133 @@
+<html>
+<head>
+<title id="title"></title>
+$(if refresh-timeout)
+<!-- meta http-equiv="refresh" content="$(refresh-timeout-secs)" -->
+$(endif)
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"/>
+<link rel="stylesheet" href="css/mikhmon-ui-light.css">
+<link rel="stylesheet" href="css/background.css">
+<link rel="icon" href="img/favicon.png" />
+<style>
+iframe  {float:left; height:22px; width:100%;}
+</style>
+<script language="JavaScript">
+<!--	
+$(if advert-pending == 'yes')
+    var popup = '';
+    function focusAdvert() {
+	if (window.focus) popup.focus();
+    }
+    function openAdvert() {
+	popup = open('$(link-advert)', 'hotspot_advert', '');
+	setTimeout("focusAdvert()", 1000);
+    }
+$(endif)
+    function openLogout() {
+	deleteAllCookies();
+	if (window.name != 'hotspot_status') return true;
+        open('$(link-logout)', 'hotspot_logout', 'toolbar=0,location=0,directories=0,status=0,menubars=0,resizable=1,width=280,height=250');
+	window.close();
+	return false;
+    }
+	
+	
+	function deleteAllCookies() {
+    var cookies = document.cookie.split(";");
+
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        var eqPos = cookie.indexOf("=");
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
+}
+//-->
+</script>
+</head>
+<body class="background" bottommargin="0" topmargin="0" leftmargin="0" rightmargin="0"
+$(if advert-pending == 'yes')
+	onLoad="openAdvert()"
+$(endif)
+>
+	<div class="container">
+		<div class="row mt-10">
+			<div class="col-4 mr-a" style="float:none; margin-top: 10%;">
+				<div class="row">
+    				<div class="col-12">
+    					<div class="card box-shadow">
+    						<div class="card-header bg-primary"><h3 id="pisowifi_name">PisoWifi</h3></div>
+    						<div class="card-body"><center>
+      $(if login-by == 'trial')
+         <h3>Free 15Mins Internet Trial</h3>
+      $(elif login-by != 'mac')
+        <h3>Voucher Code : <span style="color:green;">$(username)</span></h3>
+      $(endif)
+	  </center>
+    <div style="padding:10px;"><a class="a" id="cek" href="./detail.html"></a></div>
+    <form action="$(link-logout)" name="logout" onSubmit="return openLogout()">
+    
+		$(if session-time-left)
+		<center>
+			<small>Remaining time</small>
+			<h1 id="time-left"  style="margin-top: 0px;padding-top: 0px;">Please wait</h1>
+		</center>
+		$(endif)
+		
+		 $(if remain-bytes-total)
+		 <center>
+			<small >Remaining Data</small>
+			<h3>$(remain-bytes-total-nice)</h3>
+		 </center>
+		 $(endif)
+		 <center>
+			<span style="color:red;"><b>MAC</b>: $(mac) | <b>IP</b>: $(ip)</span>
+		</span>
+        <hr/>
+		$(if login-by-mac != 'yes')
+        <button type="submit" style="width:100%;" class="btn-md bg-primary pd-5">PAUSE / EXTEND</button>
+        $(endif)
+     
+    </form>
+	
+    </div>
+</div>
+</div>
+<br/>
+	<div class="col-12" style="color:#FFF;">
+		<center>
+		&copy; 2020 - Powered by Mendy<br/>
+		</center>
+	</div>
+</div>
+</div>
+</div>
+</div>
+<script src="portal.txt"></script>
+
+<script src="jquery.min.js"></script>
+<script type="text/javascript">
+	document.getElementById('title').innerHTML = window.location.hostname + " > status";
+</script>
+<script>
+	//test
+	$(document).ready(function(){
+		document.getElementById("pisowifi_name").innerHTML = pisowifi_title;
+		setInterval(function(){
+			$.get("/time.txt",function(data){
+				
+				json=JSON.parse(data);
+				
+				if(json.timeleft.length>1) {
+					$("#time-left").html(json.timeleft.replace("h","hour ").replace("m","min ").replace("s","sec"));
+				} else {
+				location.reload();
+				}
+			});
+		},1100);
+
+	});
+</script>
+</body>
+</html>
