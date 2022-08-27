@@ -21,7 +21,7 @@ session_start();
 //init_set('display_errors',1);
 error_reporting(E_ALL);
 
-include('../flash.php');
+include('flash.php');
 
 function dateTimeConverter($inputs) {
     // here you can customize how the function interprets input data and how it should return the result
