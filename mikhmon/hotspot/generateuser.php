@@ -322,7 +322,7 @@ date_default_timezone_set($_SESSION['timezone']);
   
   
   <tr>
-   <?php if(count($TotalReg) > 1) { ?>
+   <?php if(isset($TotalReg) && count($TotalReg) > 1) { ?>
     <td class="align-middle">Please select Hotspot</td>
     <td>
 		<select class="form-control " name="server" required="1">

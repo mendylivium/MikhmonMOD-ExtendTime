@@ -15,9 +15,11 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+ 
 session_start();
 // hide all error
-error_reporting(0);
+//init_set('display_errors',1);
+error_reporting(E_ALL);
 
 include('../flash.php');
 
@@ -84,12 +86,13 @@ if (!isset($_SESSION["mikhmon"])) {
       $sprice = $getsprice;
     }
     $getlock = ($_POST['lockunlock']);
-    if ($getlock == Enable) {
+    if ($getlock == 'Enable') {
       $lock = '; [:local mac $"mac-address"; /ip hotspot user set mac-address=$mac [find where name=$user]]';
     } else {
       $lock = "";
     }
 
+	
     $randstarttime = "0".rand(1,5).":".rand(10,59).":".rand(10,59);
     $randinterval = "00:02:".rand(10,59);
 
@@ -368,7 +371,7 @@ if (!isset($_SESSION["mikhmon"])) {
     <td class="align-middle">Shared Users</td><td><input class="form-control" type="text" size="4" autocomplete="off" name="sharedusers" value="1" required="1" readonly></td>
   </tr>
   <tr id="validity">
-    <td class="align-middle"><?= $_validity ?></td><? /* <input class="form-control" type="text" id="validi" size="4" autocomplete="off" name="validity" value="1d" required="1" readonly></td> */?>
+    <td class="align-middle"><?= $_validity ?></td><?php /* <input class="form-control" type="text" id="validi" size="4" autocomplete="off" name="validity" value="1d" required="1" readonly> */ ?>
 		<td>
 		<input type="hidden" name="validity" />
 		<div class="row">

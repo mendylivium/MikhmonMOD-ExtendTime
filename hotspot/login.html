@@ -76,9 +76,9 @@ img {vertical-align: middle;}
 /* Fading animation */
 .fade {
   -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
+  -webkit-animation-duration: 4.5s;
   animation-name: fade;
-  animation-duration: 1.5s;
+  animation-duration: 4.5s;
 }
 
 @-webkit-keyframes fade {
@@ -175,24 +175,29 @@ img {vertical-align: middle;}
 
 <div class="mySlides fade">
   <div class="numbertext"></div>
+  <img src="img/slide1.png" style="width:96%">
+  <div class="text"></div>
+</div>
+<div class="mySlides fade">
+  <div class="numbertext"></div>
+  <img src="img/slide2.png" style="width:96%">
+  <div class="text"></div>
+</div>
+<div class="mySlides fade">
+  <div class="numbertext"></div>
   <img src="img/slide3.png" style="width:96%">
   <div class="text"></div>
 </div>
 <div class="mySlides fade">
-  <div class="numbertext"></div>
-  <img src="img/slide4.png" style="width:96%">
-  <div class="text"></div>
-</div>
-<div class="mySlides fade">
-  <div class="numbertext"></div>
-  <img src="img/slide5.png" style="width:96%">
-  <div class="text"></div>
-</div>
-<div class="mySlides fade">
-  <div class="numbertext"></div>
-  <img src="img/slide6.png" style="width:96%">
-  <div class="text"></div>
-</div>
+	<div class="numbertext"></div>
+	<img src="img/slide4.png" style="width:96%">
+	<div class="text"></div>
+  </div>
+  <div class="mySlides fade">
+	<div class="numbertext"></div>
+	<img src="img/slide5.png" style="width:96%">
+	<div class="text"></div>
+  </div>
 
 
 
@@ -233,7 +238,7 @@ function showSlides() {
   }
   slides[slideIndex-1].style.display = "block";  
   dots[slideIndex-1].className += " active";
-  setTimeout(showSlides, 2000); // Change image every 2 seconds
+  setTimeout(showSlides, 5000); // Change image every 2 seconds
 }
 </script>
 		</div>

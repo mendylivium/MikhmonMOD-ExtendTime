@@ -17,7 +17,7 @@
  */
 session_start();
 // hide all error
-error_reporting(0);
+error_reporting(E_ALL);
 
 ob_start("ob_gzhandler");
 
